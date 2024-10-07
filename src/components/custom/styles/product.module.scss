@@ -1,0 +1,16 @@
+@import "@/styles/nord";
+
+.card {
+  width: 384px;
+  height: 384px;
+
+  transition: 0.2s ease-in-out;
+}
+
+.card_hover {
+  transform: scale(1.025);
+}
+
+.card:active {
+  transform: scale(1.005);
+}

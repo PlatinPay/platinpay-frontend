@@ -14,9 +14,7 @@ export const CardSpotlight = ({
   radius = 350,
   color = "#262626",
   className,
-  _style = {
-    borderRadius: "24px",
-  },
+  _style,
   ...props
 }: {
   radius?: number;

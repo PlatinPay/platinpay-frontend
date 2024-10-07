@@ -1,6 +1,16 @@
+// "use client";
+
+// import React, { useEffect } from "react";
+
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.scss";
+
+import Image from "next/image";
+
+import styles from "./layout.module.scss";
+
+// import { Gradient } from "@/../public/scripts/Gradient.js";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,9 +33,37 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // useEffect(() => {
+  //   const gradient = new Gradient();
+  //
+  //   // @ts-expect-error I aint fixing this :nerd_emoji:
+  //   gradient.initGradient("#gradient-canvas");
+  // }, []);
+
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        {/*<div className={styles.gradientBlur} />*/}
+
+        {/*<canvas*/}
+        {/*  id="gradient-canvas"*/}
+        {/*  className={styles.gradientBackground}*/}
+        {/*  data-transition-in*/}
+        {/*/>*/}
+
+        <div className={styles.topbar}>
+          <div className={styles.island}></div>
+
+          <div className={styles.island}>
+            <Image
+              className={styles.profile}
+              src={"/images/profile.png"}
+              width={34}
+              height={34}
+              alt={"Profile"}
+            />
+          </div>
+        </div>
         {children}
       </body>
     </html>

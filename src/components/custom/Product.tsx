@@ -1,15 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { CSSProperties, useState } from "react";
 
 import { motion } from "framer-motion";
 import { clsx } from "clsx";
 
-import styles from "./card.module.scss";
+import styles from "./styles/product.module.scss";
 
 import { CardSpotlight } from "@/components/ui/card-spotlight";
 
-export function Card() {
+export function Product({
+  _style = {
+    borderRadius: "24px",
+  },
+}: {
+  _style?: CSSProperties;
+}) {
   const [mouseHover, setMouseHover] = useState<boolean>(false);
 
   const mouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -28,6 +34,7 @@ export function Card() {
         className={clsx(styles.card, {
           [styles.card_hover]: mouseHover,
         })}
+        _style={_style}
       >
         <p className="text-xl font-bold relative z-20 mt-2 text-white">
           Product
