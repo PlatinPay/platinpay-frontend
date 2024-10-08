@@ -13,8 +13,10 @@ export function Product({
   _style = {
     borderRadius: "24px",
   },
+  product,
 }: {
   _style?: CSSProperties;
+  product: any;
 }) {
   const [mouseHover, setMouseHover] = useState<boolean>(false);
 
@@ -37,18 +39,23 @@ export function Product({
         _style={_style}
       >
         <p className="text-xl font-bold relative z-20 mt-2 text-white">
-          Product
+          {product.product_display_name}
         </p>
         <div className="text-neutral-200 mt-4 relative z-20">
-          Description
-          <ul className="list-none  mt-2">
-            <Step title="Instant delivery" />
-            <Step title="Money-back guarantee" />
-          </ul>
+          {product.product_name}
+          {/*<ul className="list-none  mt-2">*/}
+          {/*  <Step title="Instant delivery" />*/}
+          {/*  <Step title="Money-back guarantee" />*/}
+          {/*</ul>*/}
         </div>
         <p className="text-neutral-300 mt-4 relative z-20 text-sm">
-          Ensuring your account is properly secured helps protect your personal
-          information and data.
+          {product.product_description}
+        </p>{" "}
+        <p className="text-neutral-300 mt-4 relative z-20 text-sm">
+          ${product.price}
+        </p>
+        <p className="text-neutral-300 mt-4 relative z-20 text-sm">
+          Stock: {product.stock}
         </p>
       </CardSpotlight>
     </motion.div>
