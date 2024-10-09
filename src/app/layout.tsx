@@ -1,6 +1,15 @@
-// "use client";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 
-// import React, { useEffect } from "react";
+import { Roboto } from "next/font/google";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "@/lib/theme";
+
+const roboto = Roboto({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-roboto",
+});
 
 import type { Metadata } from "next";
 import localFont from "next/font/local";
@@ -9,8 +18,7 @@ import "./globals.scss";
 import Image from "next/image";
 
 import styles from "./layout.module.scss";
-
-// import { Gradient } from "@/../public/scripts/Gradient.js";
+import React from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,38 +41,28 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // useEffect(() => {
-  //   const gradient = new Gradient();
-  //
-  //   // @ts-expect-error I aint fixing this :nerd_emoji:
-  //   gradient.initGradient("#gradient-canvas");
-  // }, []);
-
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {/*<div className={styles.gradientBlur} />*/}
+      <body className={roboto.variable}>
+        {/*<body className={`${geistSans.variable} ${geistMono.variable}`}>*/}
+        <AppRouterCacheProvider>
+          <ThemeProvider theme={theme}>
+            <div className={styles.topbar}>
+              <div className={styles.island}></div>
 
-        {/*<canvas*/}
-        {/*  id="gradient-canvas"*/}
-        {/*  className={styles.gradientBackground}*/}
-        {/*  data-transition-in*/}
-        {/*/>*/}
-
-        <div className={styles.topbar}>
-          <div className={styles.island}></div>
-
-          <div className={styles.island}>
-            <Image
-              className={styles.profile}
-              src={"/images/profile.png"}
-              width={34}
-              height={34}
-              alt={"Profile"}
-            />
-          </div>
-        </div>
-        {children}
+              <div className={styles.island}>
+                <Image
+                  className={styles.profile}
+                  src={"/images/profile.png"}
+                  width={34}
+                  height={34}
+                  alt={"Profile"}
+                />
+              </div>
+            </div>
+            {children}
+          </ThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

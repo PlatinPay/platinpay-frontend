@@ -4,11 +4,11 @@ import axios from "axios";
 
 import storeStyles from "@/styles/store.module.scss";
 
-import { Product } from "@/components/custom/Product";
+import Product from "@/components/store/Product";
 
 async function getStoreDetails(storeName: string) {
   return await axios
-    .get(`http://localhost:3001/store/get-id/${storeName}`)
+    .get(`http://localhost:3001/store/by-id/${storeName}`)
     .then((response) => {
       console.log(response.data);
       return response.data;
@@ -48,8 +48,8 @@ export default async function store({
     <div>
       {storeDetails ? (
         <>
-          <div className={styles.title}>{storeDetails.store_name}</div>
-          <div className={storeStyles.product_container}>
+          <div className={styles.title}>{storeDetails.store_display_name}</div>
+          <div className={storeStyles.products_container}>
             {storeProducts.map((product: any) => (
               <Product key={product.product_id} product={product} />
               // <Product key={product.product_id} product={product} />r

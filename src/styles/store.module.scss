@@ -1,8 +1,79 @@
-.product_container {
+@import "@/styles/nord";
+
+.products_container {
   display: flex;
   flex-wrap: wrap;
+
   gap: 20px;
   padding: 20px;
+
   justify-content: flex-start;
   align-items: flex-start;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+
+  border: #3b4252 1px solid;
+
+  border-radius: 8px;
+  padding: 16px;
+
+  width: 350px;
+  height: 200px;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.product_clicked {
+  //border: #748ca9 1px solid;
+  transform: scale(1.005) !important;
+  //background: $nord0;
+}
+
+.product:hover {
+  border: #748ca9 1px solid;
+  transform: scale(1.015);
+  background: $nord0;
+}
+
+.product_header {
+  display: flex;
+  align-items: center;
+  //align-items: flex-start;
+}
+
+.product_info {
+  display: flex;
+  flex-direction: column;
+  padding-left: 16px;
+
+  max-width: calc(100% - 64px);
+  //background: red;
+
+  flex-grow: 1;
+
+  //justify-content: flex-start; /* Ensure content is aligned to the top */
+  //gap: 8px;
+}
+
+.product_display_name {
+  font-size: 1.25rem;
+  font-weight: bold;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product_name {
+  font-size: 0.95rem;
+  color: #afb4bd;
+}
+
+.product_seperator {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #3b4252;
 }
