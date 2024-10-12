@@ -1,0 +1,109 @@
+@import "@/styles/nord";
+
+.inputField {
+  width: auto;
+  height: 30px;
+
+  background-color: $nord1;
+
+  border-radius: 5px;
+
+  outline: 1.5px solid $nord2;
+  border: 2.5px solid transparent;
+
+  padding: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.inputField:not(:not(.inputField_error)) {
+  outline: 1.5px solid $nord3;
+  //border: 2.5px solid $nord11;
+}
+
+.inputField:focus-within:not(.inputField_error) {
+  outline: 1.5px solid $nord3;
+  //border: 2.5px solid $nord3;
+}
+
+.inputField:focus-within {
+  outline: 1.5px solid $nord11;
+  //border: 2.5px solid $nord11;
+}
+
+//.inputField-success {
+//  box-shadow: 0 0 var(--input-status-border) var(--input-success-color);
+//}
+//
+//.inputField-error {
+//  box-shadow: 0 0 var(--input-status-border) var(--input-error-color);
+//}
+
+.input {
+  width: 100%;
+
+  background-color: transparent;
+
+  padding-left: 36px;
+
+  border: none;
+  outline: none;
+
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+}
+
+.input::placeholder {
+  color: #aaa;
+}
+
+.inputField:has(.input:disabled) {
+  opacity: 0.5;
+}
+
+.inputField:has(.input:disabled), .input:disabled {
+  cursor: not-allowed;
+
+  // stop all cursor events
+  // pointer-events: none;
+}
+
+.passwordInput {
+  // width: calc(100% - 1px);
+  margin-right: calc((100% - 3px) - (100% - 42px));
+
+  // position: absolute;
+  // padding-left: calc();
+}
+
+.inputIcon {
+  color: #aaa;
+  left: 12px;
+  //right: 12px;
+  //top: 50%;
+  //transform: translateY(-50%);
+  transition: all 0.2s ease-in-out;
+  //font-size: 24px;
+  position: absolute;
+  //display: block;
+}
+
+.right-input-icon {
+  left: 85%;
+  //margin-left: 10px;
+  /* right: 16px; */
+}
+
+.right-input-icon:hover {
+  color: $nord7;
+}
+
+.input:focus ~ .left-icon {
+  color: $nord7;
+}

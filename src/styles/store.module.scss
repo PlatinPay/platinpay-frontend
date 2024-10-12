@@ -1,6 +1,6 @@
 @import "@/styles/nord";
 
-.products_container {
+.productsContainer {
   display: flex;
   flex-wrap: wrap;
 
@@ -35,16 +35,16 @@
 .product:hover {
   border: #748ca9 1px solid;
   transform: scale(1.015);
-  background: $nord0;
+  background: $nord2;
 }
 
-.product_header {
+.productHeader {
   display: flex;
   align-items: center;
   //align-items: flex-start;
 }
 
-.product_info {
+.productInfo {
   display: flex;
   flex-direction: column;
   padding-left: 16px;
@@ -58,7 +58,7 @@
   //gap: 8px;
 }
 
-.product_display_name {
+.productDisplayName {
   font-size: 1.25rem;
   font-weight: bold;
 
@@ -67,13 +67,35 @@
   text-overflow: ellipsis;
 }
 
-.product_name {
+.productName {
   font-size: 0.95rem;
   color: #afb4bd;
 }
 
-.product_seperator {
+.productSeperator {
   margin-top: 12px;
   margin-bottom: 12px;
   border-bottom: 1px solid #3b4252;
+}
+
+.productFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 8px;
+}
+
+.addToCartButton {
+  background: $nord10 !important;
+  //color: $nord6;
+  //
+  //border: none;
+  //border-radius: 4px;
+  //
+  //padding: 8px 16px;
+  //
+  //cursor: pointer;
+  //
+  //transition: all 0.2s ease-in-out;
 }

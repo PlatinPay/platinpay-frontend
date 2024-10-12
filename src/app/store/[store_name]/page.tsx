@@ -1,4 +1,4 @@
-import styles from "@/styles/Index.module.scss";
+import styles from "@/styles/index.module.scss";
 
 import axios from "axios";
 
@@ -49,7 +49,7 @@ export default async function store({
       {storeDetails ? (
         <>
           <div className={styles.title}>{storeDetails.store_display_name}</div>
-          <div className={storeStyles.products_container}>
+          <div className={storeStyles.productsContainer}>
             {storeProducts.map((product: any) => (
               <Product key={product.product_id} product={product} />
               // <Product key={product.product_id} product={product} />r

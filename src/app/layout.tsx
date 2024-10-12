@@ -1,35 +1,46 @@
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
+import React from "react";
+import Image from "next/image";
 
-import { Roboto } from "next/font/google";
+import type { Metadata } from "next";
+
+import IconButton from "@mui/material/IconButton";
+
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
+
+import { CartProvider } from "@/contexts/Cart";
+
+import Cart from "@/components/Cart";
+import Toast from "@/components/Toast";
+
 import theme from "@/lib/theme";
 
+import "./globals.scss";
+
+import styles from "@/styles/index.module.scss";
+
+// import localFont from "next/font/local";
+import { Roboto } from "next/font/google";
+
 const roboto = Roboto({
-  weight: ["300", "400", "500", "700"],
+  weight: ["100", "300", "400", "500", "700", "900"],
   subsets: ["latin"],
   display: "swap",
   variable: "--font-roboto",
 });
 
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.scss";
-
-import Image from "next/image";
-
-import styles from "./layout.module.scss";
-import React from "react";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+// const geistSans = localFont({
+//   src: "./fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -47,20 +58,26 @@ export default function RootLayout({
         {/*<body className={`${geistSans.variable} ${geistMono.variable}`}>*/}
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
-            <div className={styles.topbar}>
-              <div className={styles.island}></div>
+            <CartProvider>
+              <div className={styles.topbar}>
+                <div className={styles.island}></div>
 
-              <div className={styles.island}>
-                <Image
-                  className={styles.profile}
-                  src={"/images/profile.png"}
-                  width={34}
-                  height={34}
-                  alt={"Profile"}
-                />
+                <div className={styles.island}>
+                  <Cart />
+                  <Image
+                    className={styles.profile}
+                    src={"/images/profile.png"}
+                    width={34}
+                    height={34}
+                    alt={"Profile"}
+                  />
+                </div>
               </div>
-            </div>
-            {children}
+
+              <Toast />
+
+              {children}
+            </CartProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
