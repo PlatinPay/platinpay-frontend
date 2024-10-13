@@ -13,6 +13,7 @@ import toast from "react-hot-toast";
 interface CartContextType {
   cart: any[];
   addToCart: (product: any) => void;
+  clearCart: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -39,8 +40,12 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     // toast.success("Added to cart", { id: toastId });
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart }}>
+    <CartContext.Provider value={{ cart, addToCart, clearCart }}>
       {children}
     </CartContext.Provider>
   );

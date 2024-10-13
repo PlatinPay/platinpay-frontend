@@ -24,7 +24,7 @@ import cartStyles from "@/styles/cart.module.scss";
 import inputStyles from "@/styles/input.module.scss";
 
 export default function Cart() {
-  const { cart } = useCart();
+  const { cart, clearCart } = useCart();
 
   const [lookingUpUser, setLookingUpUser] = useState<boolean>(false);
 
@@ -179,6 +179,8 @@ export default function Cart() {
               })
               .then((response) => {
                 console.log(response);
+
+                clearCart();
               })
               .catch((error) => {
                 console.error(error);
