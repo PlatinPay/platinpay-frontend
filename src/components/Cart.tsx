@@ -173,6 +173,7 @@ export default function Cart() {
                 baseURL: "http://localhost:3001",
                 url: `/user/checkout`,
                 data: {
+                  ign: userInputRef.current?.value,
                   cart,
                 },
               })
