@@ -56,7 +56,12 @@ export default function Product({ product }: { product: any }) {
       onClick={handleOnClick}
     >
       <div className={storeStyles.productHeader}>
-        <Image src="/images/product.png" alt="Product" width={56} height={56} />
+        <Image
+          src={`/images/${product.image}.png`}
+          alt="Product"
+          width={56}
+          height={56}
+        />
 
         <div className={storeStyles.productInfo}>
           <h2 className={storeStyles.productDisplayName}>

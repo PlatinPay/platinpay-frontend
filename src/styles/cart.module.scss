@@ -10,8 +10,14 @@
 
 .cartPopover {
   background: $nord0;
-  border: #3b4252 1px solid;
-  color: $nord6
+  color: $nord6;
+  border: none;
+
+  width: auto;
+}
+
+.cartPopover_notEmpty {
+  width: 300px;
 }
 
 .cartCount {
@@ -36,3 +42,145 @@
   font-size: 0.65rem;
   font-weight: 700;
 }
+
+.cartItems {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  //padding: 8px;
+}
+
+.productsContainer {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 20px;
+  padding: 20px;
+
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.product {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  border: #3b4252 1px solid;
+
+  border-radius: 8px;
+  padding: 16px;
+
+  width: 100%;
+  height: 100px;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.product_clicked {
+  //border: #748ca9 1px solid;
+  transform: scale(1.005) !important;
+  //background: $nord0;
+}
+
+.product_removing {
+  transform: translateX(200px) !important;
+  opacity: 0;
+}
+
+.product:hover {
+  border: #748ca9 1px solid;
+  transform: scale(1.015);
+  background: $nord2;
+}
+
+.productHeader {
+  display: flex;
+  align-items: center;
+  //align-items: flex-start;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  padding-left: 16px;
+
+  max-width: calc(100% - 64px);
+  //background: red;
+
+  flex-grow: 1;
+
+  //justify-content: flex-start; /* Ensure content is aligned to the top */
+  //gap: 8px;
+}
+
+.productDisplayName {
+  font-size: 1rem;
+  font-weight: bold;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.productName {
+  font-size: 0.75rem;
+  color: #afb4bd;
+}
+
+.productPrice {
+  font-size: 0.8rem;
+}
+
+//.productFooter {
+//display: flex;
+//justify-content: space-between;
+//align-items: center;
+//
+//margin-top: 8px;
+
+//position: relative;
+//}
+
+.removeFromCartButton {
+  position: absolute !important;
+  bottom: 0 !important;
+  right: 0 !important;
+
+  padding: 8px !important;
+
+  //background: $nord11 !important;
+  color: $nord11 !important;
+
+  //
+  //border: none;
+  //border-radius: 4px;
+  //
+  //padding: 8px 16px;
+  //
+  //cursor: pointer;
+  //
+  //transition: all 0.2s ease-in-out;
+}
+
+// todo some random add to cart aniamtion
+
+//@keyframes moveToB {
+//  0% {
+//    transform: translate(0, 0); /* Start at point A */
+//  }
+//  100% {
+//    transform: translate(500px, -200px); /* End at point B */
+//  }
+//}
+//
+//.moving {
+//  position: absolute;
+//  width: 50px;
+//  height: 50px;
+//  background-color: red;
+//  animation: moveToB 2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+//}

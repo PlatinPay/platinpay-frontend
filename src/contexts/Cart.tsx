@@ -8,11 +8,14 @@ import React, {
   ReactNode,
 } from "react";
 
+import { v4 as uuidv4 } from "uuid";
+
 import toast from "react-hot-toast";
 
 interface CartContextType {
   cart: any[];
   addToCart: (product: any) => void;
+  removeFromCart: (product: any) => void;
   clearCart: () => void;
 }
 
@@ -33,11 +36,23 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   const addToCart = (product: any) => {
     // const toastId = toast.loading("Adding to cart...");
 
+    const cartItem = {
+      ...product,
+      cart_id: uuidv4(),
+      quantity: 1,
+    };
+
     setCart((prevCart) => {
-      return [...prevCart, product];
+      return [...prevCart, cartItem];
     });
 
     // toast.success("Added to cart", { id: toastId });
+  };
+
+  const removeFromCart = (product: any) => {
+    setCart((prevCart) => {
+      return prevCart.filter((item) => item.cart_id !== product.cart_id);
+    });
   };
 
   const clearCart = () => {
@@ -45,7 +60,9 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, clearCart }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, clearCart }}
+    >
       {children}
     </CartContext.Provider>
   );
