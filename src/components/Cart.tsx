@@ -103,112 +103,111 @@ export default function Cart() {
           </div>
         )}
 
+        {cart.length > 0 && (
+          <div>
+            <div
+              className={clsx(
+                inputStyles.inputField,
+                //     , {
+                //   [formStyles["input-field-error"]]: inputState[input.name] === false,
+                //   [formStyles["input-field-success"]]:
+                //     inputState[input.name] === true,
+                // }
+              )}
+              style={{
+                marginTop: "32px",
+              }}
+            >
+              <input
+                className={inputStyles.input}
+                type="text"
+                autoComplete="off"
+                placeholder="IGN"
+                required={true}
+                onChange={async (e) => {
+                  e.preventDefault();
+
+                  const value = e.target.value;
+
+                  setTimeout(async () => {
+                    if (value === e.target.value) {
+                      // setLookingUpUser(true);
+                      // axios
+                      // await axios
+                      //   .get(
+                      //     `https://api.mojang.com/users/profiles/minecraft/${value}`,
+                      //   )
+                      //   .then((response) => {
+                      //     console.log(response.data);
+                      //   })
+                      //   .catch((error) => {
+                      //     console.error(error);
+                      //   });
+                      // lib_axios
+                      //   .request({
+                      //     method: "POST",
+                      //     baseURL: "http://localhost:3001",
+                      //     url: `/user/checkout`,
+                      //     data: {
+                      //       cart,
+                      //     },
+                      //   })
+                      //   .then((response) => {
+                      //     console.log(response);
+                      //   })
+                      //   .catch((error) => {
+                      //     console.error(error);
+                      //   });
+                      // console.log("Looking up user", value);
+                      // alert(value);
+                    }
+                  }, 1500);
+                }}
+                style={{
+                  textAlign: "left",
+                  // width: "100px",
+                  paddingLeft: "0",
+                }}
+                disabled={lookingUpUser}
+                ref={userInputRef}
+              />
+            </div>
+
+            <Button
+              variant="contained"
+              color="primary"
+              className={cartStyles.checkoutButton}
+              onClick={async () => {
+                lib_axios
+                  .request({
+                    method: "POST",
+                    baseURL: "http://localhost:3001",
+                    url: `/user/checkout`,
+                    data: {
+                      ign: userInputRef.current?.value,
+                      cart,
+                    },
+                  })
+                  .then((response) => {
+                    console.log(response);
+
+                    clearCart();
+                  })
+                  .catch((error) => {
+                    console.error(error);
+                  });
+              }}
+            >
+              Checkout
+            </Button>
+          </div>
+        )}
         {/*<IconButton color="inherit" className={cartStyles.clearButton}>*/}
         {/*  <ShoppingCartIcon />*/}
         {/*  {cart.length > 0 && (*/}
         {/*    <div className={cartStyles.cartCount}>{cart.length}</div>*/}
         {/*  )}*/}
         {/*</IconButton>*/}
-
-        {/*<div*/}
-        {/*  className={clsx(*/}
-        {/*    inputStyles.inputField,*/}
-        {/*    //     , {*/}
-        {/*    //   [formStyles["input-field-error"]]: inputState[input.name] === false,*/}
-        {/*    //   [formStyles["input-field-success"]]:*/}
-        {/*    //     inputState[input.name] === true,*/}
-        {/*    // }*/}
-        {/*  )}*/}
-        {/*  style={{*/}
-        {/*    marginTop: "32px",*/}
-        {/*  }}*/}
-        {/*>*/}
-        {/*  <input*/}
-        {/*    className={inputStyles.input}*/}
-        {/*    type="text"*/}
-        {/*    autoComplete="off"*/}
-        {/*    placeholder="IGN"*/}
-        {/*    required={true}*/}
-        {/*    onChange={async (e) => {*/}
-        {/*      e.preventDefault();*/}
-
-        {/*      const value = e.target.value;*/}
-
-        {/*      setTimeout(async () => {*/}
-        {/*        if (value === e.target.value) {*/}
-        {/*          // setLookingUpUser(true);*/}
-
-        {/*          // axios*/}
-        {/*          // await axios*/}
-        {/*          //   .get(*/}
-        {/*          //     `https://api.mojang.com/users/profiles/minecraft/${value}`,*/}
-        {/*          //   )*/}
-        {/*          //   .then((response) => {*/}
-        {/*          //     console.log(response.data);*/}
-        {/*          //   })*/}
-        {/*          //   .catch((error) => {*/}
-        {/*          //     console.error(error);*/}
-        {/*          //   });*/}
-
-        {/*          // lib_axios*/}
-        {/*          //   .request({*/}
-        {/*          //     method: "POST",*/}
-        {/*          //     baseURL: "http://localhost:3001",*/}
-        {/*          //     url: `/user/checkout`,*/}
-        {/*          //     data: {*/}
-        {/*          //       cart,*/}
-        {/*          //     },*/}
-        {/*          //   })*/}
-        {/*          //   .then((response) => {*/}
-        {/*          //     console.log(response);*/}
-        {/*          //   })*/}
-        {/*          //   .catch((error) => {*/}
-        {/*          //     console.error(error);*/}
-        {/*          //   });*/}
-
-        {/*          // console.log("Looking up user", value);*/}
-
-        {/*          alert(value);*/}
-        {/*        }*/}
-        {/*      }, 1500);*/}
-        {/*    }}*/}
-        {/*    style={{*/}
-        {/*      textAlign: "left",*/}
-        {/*      // width: "100px",*/}
-        {/*      paddingLeft: "0",*/}
-        {/*    }}*/}
-        {/*    disabled={lookingUpUser}*/}
-        {/*    ref={userInputRef}*/}
-        {/*  />*/}
-        {/*</div>*/}
-
-        {/*<Button*/}
-        {/*  variant="contained"*/}
-        {/*  color="primary"*/}
-        {/*  className={cartStyles.checkoutButton}*/}
-        {/*  onClick={async () => {*/}
-        {/*    lib_axios*/}
-        {/*      .request({*/}
-        {/*        method: "POST",*/}
-        {/*        baseURL: "http://localhost:3001",*/}
-        {/*        url: `/user/checkout`,*/}
-        {/*        data: {*/}
-        {/*          ign: userInputRef.current?.value,*/}
-        {/*          cart,*/}
-        {/*        },*/}
-        {/*      })*/}
-        {/*      .then((response) => {*/}
-        {/*        console.log(response);*/}
-
-        {/*        clearCart();*/}
-        {/*      })*/}
-        {/*      .catch((error) => {*/}
-        {/*        console.error(error);*/}
-        {/*      });*/}
-        {/*  }}*/}
-        {/*>*/}
-        {/*  Checkout*/}
-        {/*</Button>*/}
       </PopoverContent>
     </Popover>
   );
