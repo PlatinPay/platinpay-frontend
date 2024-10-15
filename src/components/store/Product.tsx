@@ -57,7 +57,7 @@ export default function Product({ product }: { product: any }) {
     >
       <div className={storeStyles.productHeader}>
         <Image
-          src={`/images/${product.image}.png`}
+          src={`/images/${/\.\w+$/.test(product.image) ? product.image : `${product.image}.png`}`}
           alt="Product"
           width={56}
           height={56}
