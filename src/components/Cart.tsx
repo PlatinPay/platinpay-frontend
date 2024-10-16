@@ -32,8 +32,10 @@ export default function Cart() {
   const { cart, clearCart } = useCart();
 
   const [lookingUpUser, setLookingUpUser] = useState<boolean>(false);
+  const [lookingUpDiscord, setLookingUpDiscord] = useState<boolean>(false);
 
   const userInputRef = useRef<HTMLInputElement>(null);
+  const discordInputRef = useRef<HTMLInputElement>(null);
 
   // useEffect(() => {
   //   //   Local storage cart get
@@ -114,9 +116,6 @@ export default function Cart() {
                 //     inputState[input.name] === true,
                 // }
               )}
-              style={{
-                marginTop: "32px",
-              }}
             >
               <input
                 className={inputStyles.input}
@@ -173,6 +172,71 @@ export default function Cart() {
               />
             </div>
 
+            <div
+              className={clsx(
+                inputStyles.inputField,
+                //     , {
+                //   [formStyles["input-field-error"]]: inputState[input.name] === false,
+                //   [formStyles["input-field-success"]]:
+                //     inputState[input.name] === true,
+                // }
+              )}
+            >
+              <input
+                className={inputStyles.input}
+                type="text"
+                autoComplete="off"
+                placeholder="Discord user ID"
+                required={true}
+                onChange={async (e) => {
+                  e.preventDefault();
+
+                  const value = e.target.value;
+
+                  setTimeout(async () => {
+                    if (value === e.target.value) {
+                      // setLookingUpUser(true);
+                      // axios
+                      // await axios
+                      //   .get(
+                      //     `https://api.mojang.com/users/profiles/minecraft/${value}`,
+                      //   )
+                      //   .then((response) => {
+                      //     console.log(response.data);
+                      //   })
+                      //   .catch((error) => {
+                      //     console.error(error);
+                      //   });
+                      // lib_axios
+                      //   .request({
+                      //     method: "POST",
+                      //     baseURL: "http://localhost:3001",
+                      //     url: `/user/checkout`,
+                      //     data: {
+                      //       cart,
+                      //     },
+                      //   })
+                      //   .then((response) => {
+                      //     console.log(response);
+                      //   })
+                      //   .catch((error) => {
+                      //     console.error(error);
+                      //   });
+                      // console.log("Looking up user", value);
+                      // alert(value);
+                    }
+                  }, 1500);
+                }}
+                style={{
+                  textAlign: "left",
+                  // width: "100px",
+                  paddingLeft: "0",
+                }}
+                disabled={lookingUpDiscord}
+                ref={discordInputRef}
+              />
+            </div>
+
             <Button
               variant="contained"
               color="primary"
@@ -185,6 +249,7 @@ export default function Cart() {
                     url: `/user/checkout`,
                     data: {
                       ign: userInputRef.current?.value,
+                      discordId: discordInputRef.current?.value,
                       cart,
                     },
                   })
