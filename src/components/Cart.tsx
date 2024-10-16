@@ -4,12 +4,12 @@ import { useState, useRef } from "react";
 
 import { useCart } from "@/contexts/Cart";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import clsx from "clsx";
 import toast from "react-hot-toast";
 
-import lib_toaster from "@iunstable0/website-libs/build/toaster";
+// import lib_toaster from "@iunstable0/website-libs/build/toaster";
 
 import lib_axios from "@iunstable0/server-libs/build/axios";
 
@@ -31,6 +31,7 @@ import inputStyles from "@/styles/input.module.scss";
 export default function Cart() {
   const { cart, clearCart } = useCart();
 
+  // Ignore eslint
   const [lookingUpUser, setLookingUpUser] = useState<boolean>(false);
   const [lookingUpDiscord, setLookingUpDiscord] = useState<boolean>(false);
 

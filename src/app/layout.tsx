@@ -3,9 +3,9 @@ import Image from "next/image";
 
 import type { Metadata } from "next";
 
-import IconButton from "@mui/material/IconButton";
+// import IconButton from "@mui/material/IconButton";
 
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+// import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { ThemeProvider } from "@mui/material/styles";

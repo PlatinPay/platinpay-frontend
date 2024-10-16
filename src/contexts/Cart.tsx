@@ -24,14 +24,25 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [cart, setCart] = useState<any[]>(() => {
-    const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+  // const [cart, setCart] = useState<any[]>(() => {
+  //   const savedCart = localStorage.getItem("cart");
+  //   return savedCart ? JSON.parse(savedCart) : [];
+  // });
+
+  const [cart, setCart] = useState<any[]>([]);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedCart = localStorage.getItem("cart");
+      if (savedCart) {
+        setCart(JSON.parse(savedCart));
+      }
+    }
+  }, []);
 
   const addToCart = (product: any) => {
     // const toastId = toast.loading("Adding to cart...");
