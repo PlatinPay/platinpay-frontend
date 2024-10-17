@@ -10,8 +10,6 @@ import React, {
 
 import { v4 as uuidv4 } from "uuid";
 
-import toast from "react-hot-toast";
-
 interface CartContextType {
   cart: any[];
   addToCart: (product: any) => void;
@@ -28,7 +26,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     try {
       const savedCart = localStorage.getItem("cart");
       return savedCart ? JSON.parse(savedCart) : [];
-    } catch (e) {
+    } catch {
       return [];
     }
   });

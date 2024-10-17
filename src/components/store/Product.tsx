@@ -6,11 +6,7 @@ import Image from "next/image";
 
 import clsx from "clsx";
 
-import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 import { useCart } from "@/contexts/Cart";
 
@@ -29,7 +25,7 @@ export default function Product({ product }: { product: any }) {
     }, 200);
   };
 
-  const handleCartButton = (e, product) => {
+  const handleCartButton = (e: any, product: any) => {
     e.stopPropagation();
 
     // let cart: any = localStorage.getItem("cart");

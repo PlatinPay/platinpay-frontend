@@ -160,6 +160,7 @@ export default function Cart() {
                       //   });
                       // console.log("Looking up user", value);
                       // alert(value);
+                      setLookingUpUser(false);
                     }
                   }, 1500);
                 }}
@@ -225,6 +226,7 @@ export default function Cart() {
                       //   });
                       // console.log("Looking up user", value);
                       // alert(value);
+                      setLookingUpDiscord(false);
                     }
                   }, 1500);
                 }}
