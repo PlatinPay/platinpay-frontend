@@ -49,7 +49,7 @@ export default function Cart() {
 
   return (
     <Popover>
-      <PopoverTrigger>
+      <PopoverTrigger asChild>
         <IconButton color="inherit" className={cartStyles.cartButton}>
           <ShoppingCartIcon />
           {cart.length > 0 && (
