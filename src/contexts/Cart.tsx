@@ -10,8 +10,6 @@ import React, {
 
 import { v4 as uuidv4 } from "uuid";
 
-import toast from "react-hot-toast";
-
 interface CartContextType {
   cart: any[];
   addToCart: (product: any) => void;
@@ -24,25 +22,29 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  // const [cart, setCart] = useState<any[]>(() => {
-  //   const savedCart = localStorage.getItem("cart");
-  //   return savedCart ? JSON.parse(savedCart) : [];
-  // });
+  const [cart, setCart] = useState<any[]>(() => {
+    try {
+      const savedCart = localStorage.getItem("cart");
+      return savedCart ? JSON.parse(savedCart) : [];
+    } catch {
+      return [];
+    }
+  });
 
-  const [cart, setCart] = useState<any[]>([]);
+  // const [cart, setCart] = useState<any[]>([]);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const savedCart = localStorage.getItem("cart");
-      if (savedCart) {
-        setCart(JSON.parse(savedCart));
-      }
-    }
-  }, []);
+  // useEffect(() => {
+  //   // if (typeof window !== "undefined") {
+  //   const savedCart = localStorage.getItem("cart");
+  //   if (savedCart) {
+  //     setCart(JSON.parse(savedCart));
+  //   }
+  //   // }
+  // }, []);
 
   const addToCart = (product: any) => {
     // const toastId = toast.loading("Adding to cart...");
