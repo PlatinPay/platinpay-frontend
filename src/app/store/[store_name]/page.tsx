@@ -8,7 +8,7 @@ import Product from "@/components/store/Product";
 
 async function getStoreDetails(storeName: string) {
   return await axios
-    .get(`http://localhost:3001/store/by-id/${storeName}`)
+    .get(`http://127.0.0.1:3001/store/by-id/${storeName}`)
     .then((response) => {
       console.log(response.data);
       return response.data;
@@ -21,7 +21,7 @@ async function getStoreDetails(storeName: string) {
 
 async function getStoreProducts(storeId: string) {
   return await axios
-    .get(`http://localhost:3001/store/${storeId}/products`)
+    .get(`http://127.0.0.1:3001/store/${storeId}/products`)
     .then((response) => {
       console.log(response.data);
       return response.data;

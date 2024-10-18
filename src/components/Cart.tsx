@@ -246,7 +246,7 @@ export default function Cart() {
                 lib_axios
                   .request({
                     method: "POST",
-                    baseURL: "http://localhost:3001",
+                    baseURL: "https://api.platinpay.cc",
                     url: `/user/checkout`,
                     data: {
                       ign: userInputRef.current?.value,
