@@ -1,83 +1,52 @@
-This project is licensed under the [GNU AGPL-3.0](LICENSE) License. See the `LICENSE` file for details.
+# PlatinPay-Frontend
 
-**DISCLAIMER: This project is currently not ready for production usage. It is a work-in-progress.**
+[Find the main README here! (It has a showcase video and deployment links so you can try PlatinPay yourself!)](https://github.com/PlatinPay)
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [
-`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is the Frontend of the PlatinPay project.
 
-## Getting Started
+## Features
+- Beautiful nord-themed UI 😍
 
-First, run the development server:
+# NOTE: Everything is subject to change, this is only a proof-of-concept and definitely not finalized, there are still a lot more features on the roadmap and the backend will also be ported to either Go or Rust
 
+## Prerequesites
+
+Make sure `bun` is installed and up-to-date
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+curl -fsSL https://bun.sh/install | bash
+```
+or
+```bash
+bun upgrade
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+(Feel free to use other package managers and/or runtime for this project, i just prefer bun :3)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically
-optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Clone the repository
+```bash
+git clone https://github.com/PlatinPay/platinpay-frontend
+```
+2. `cd` into the cloned git repo
+```bash
+cd platinpay-frontend
+```
+3. Install packages
+```bash
+bun i
+```
+4. Build
+```bash
+bun run build
+```
+5. Start
+```bash
+bun run start
+```
 
-## Learn More
+The frontend will run on port `6969` by default, to change that, edit the file `package.json` and find the text `-p 6969` and change the number `6969` to your desired port then restart the app
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions
-are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use
-the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)
-from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for
-more details.
-
-# PlatinPay
-
-Both @iUnstable0 and I (@DatCodeMania) have ran Minecraft servers before. Monetization is what keeps a server alive, but
-it always seems to be so painful... When I ran my Minecraft server, I resorted to using Tebex. That was... not great.
-Lots of their services were unmaintained, and the 'taxing' model was completely unfair. Moreover, custom HTML cost a
-ton! Minecraft servers are already hard enough to keep afloat, I don't need a greedy company stealing my money!
-
-Now, it's been a while since either of us ran a Minecraft server. But, the Minecraft payment service situation has stuck
-with us to this day. So, we decided to make PlatinPay.
-
-PlatinPay is an OSS alternative to Tebex and other such payment services. It is currently a WIP, but we aspire to use
-Stripe for payment processing, as Stripe has some of the lowest fees in this field. If you selfhost the only additional
-fees you will pay will be to Stripe (and, if applicable, your bank)
-
-### NOTE: Not all features are implemented yet, and not every feature listed is finalized. This is a WIP project.
-
-## PlatinPay's features:
-
-- Create different types of products, such as one-time purchases, subscriptions, consumable items, and more!
-- Integration with Discord for role rewards and communication  (for example, instead of setting up a
-  mail server to send emails to your players, you can just send them a DM on Discord!)
-- Easily create automations with our powerful, easy-to-learn, and extensible framework (e.g., when a purchase is made,
-  do X and Y).
-
-- High customizability to fulfill your pleasurable needs
-- A beautiful, Nord-themed UI :3 (this is the default, but feel free to add alternatives and submit PRs)
-
-## This project is far from done. Our Roadmap consists of:
-
-- Porting backend to Go (or maybe rust uwu)
-- Affordable hosting solutions for those who don't want to self-host/are unable to
-- Better system infastructure (this project is kinda just a proof-of-concept rn so sum codes are a bit messy and not
-  production ready and a lot of things are subject to change)
 
 This project is licensed under the [GNU AGPL-3.0](LICENSE) License. See the `LICENSE` file for details.
 
