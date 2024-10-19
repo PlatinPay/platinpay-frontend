@@ -9,7 +9,7 @@ This is the Frontend of the PlatinPay project.
 
 # NOTE: Everything is subject to change, this is only a proof-of-concept and definitely not finalized, there are still a lot more features on the roadmap and the backend will also be ported to either Go or Rust
 
-## Prerequesites
+## Prerequisites
 
 Make sure `bun` is installed and up-to-date
 ```bash
@@ -36,17 +36,29 @@ cd platinpay-frontend
 ```bash
 bun i
 ```
-4. Build
+4. Build the app
 ```bash
 bun run build
 ```
-5. Start
+5. Start the app
 ```bash
 bun run start
 ```
 
-The frontend will run on port `6969` by default, to change that, edit the file `package.json` and find the text `-p 6969` and change the number `6969` to your desired port then restart the app
+If you are running PlatinPay locally, you will have to change quite a few things as right now the `platinpay.cc` is hardcoded into the project
 
+1. `src/components/Cart.tsx` Line 251
+   
+  Change the baseURL from `https://api.platinpay.cc` to `http://127.0.0.1:[PORT_HERE]`
+
+2. `src/app/store/[store_name]/page.tsx` Line 11 and 24
+   
+  Replace `3001` with the new backend port you set (ONLY IF YOU CHANGED THE BACKEND PORT)
+
+After you've made your changes, make sure to **rebuild** the app and start it again
+
+
+The frontend will run on port `6969` by default, to change that, edit the file `package.json` and find the text `-p 6969` and change the number `6969` to your desired port then restart the app
 
 This project is licensed under the [GNU AGPL-3.0](LICENSE) License. See the `LICENSE` file for details.
 
